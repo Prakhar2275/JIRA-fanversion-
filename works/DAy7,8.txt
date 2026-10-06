@@ -1,0 +1,101 @@
+askFlow — Day 7 + Day 8 Tasks
+
+DAY 7 — Exceptions + Custom Exceptions
+
+7.1 Exception Understanding
+- Error vs Exception
+- Why exceptions occur
+- Common runtime exceptions
+
+7.2 try-catch
+- try block
+- catch block
+- Safe exception handling
+
+7.3 Multiple Catch
+- Multiple catch blocks
+- Catch matching and ordering
+
+7.4 finally
+- Purpose of finally
+- When finally executes
+
+7.5 throw
+- Manually throw an exception
+- Understand throw new Exception(...)
+
+7.6 Custom Exception
+- Create TaskNotFoundException
+- Extend RuntimeException
+- Constructor with message
+
+7.7 Integrate into TaskFlow
+- Modify findTaskById()
+- Throw TaskNotFoundException when task does not exist
+- Handle using try-catch
+
+7.8 throw vs throws
+- throw = actually throws an exception
+- throws = declares possible exception(s)
+
+7.9 Project-level Exception Handling
+- Exception propagation
+- Appropriate handling level
+
+7.10 Final Integration
+- Test valid task ID
+- Test invalid task ID
+- Verify exception message and program flow
+
+
+DAY 8 — Generics + Lambda + Streams
+
+8.1 Generics Fundamentals
+- What Generics are
+- Why they are needed
+- Type safety
+- Reusability
+- Raw vs parameterized types
+- List<Task>, ArrayList<String>
+
+8.2 Generic Class
+- Create Box<T>
+- Understand type parameter T
+- Box<String>, Box<Integer>, Box<User>
+
+8.3 Generic Method
+- Create <T> void printValue(T value)
+- Method-level type parameter
+- Type inference
+
+8.4 Generics in TaskFlow
+- List<Task> as generic collection
+- Only Task objects can be added
+- Avoid unnecessary casting
+
+8.5 Lambda Fundamentals
+- Lambda syntax: (parameters) -> expression
+- Why Lambda is useful
+- Functional Interface
+- Lambda implements a functional interface's single abstract method
+
+8.6 Functional Interfaces
+- Predicate
+- Consumer
+- Function
+- Supplier
+- Basic purpose of each
+
+8.7 Lambda + Collections
+- Convert loops to forEach() + Lambda
+- Use Lambda with TaskFlow collections
+
+8.8 Streams + filter + forEach + Lambda — TaskFlow
+- Stream is a processing pipeline, not a collection
+- tasks.stream()
+- filter(task -> task.getPriority() == Priority.HIGH)
+- forEach(task -> task.displayTask())
+- Understand the complete pipeline:
+  List<Task> -> stream() -> filter() -> matching tasks -> forEach()
+- Understand Lambda's role in filter() and forEach()
+- Implement displayHighPriorityTasks() in Project

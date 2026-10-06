@@ -1,0 +1,345 @@
+TASKFLOW — DAY 5 WORK
+========================
+
+TOPIC: INHERITANCE
+
+GOAL
+----
+Understand inheritance deeply and apply it inside the TaskFlow project.
+
+By the end of Day 5 you should understand:
+- Parent/base class
+- Child/derived class
+- extends
+- IS-A relationship
+- Code reuse through inheritance
+- super()
+- Parent and child constructors
+- Method overriding
+- @Override
+- Basic polymorphism
+
+--------------------------------
+TASK 5.1 — DESIGN THE HIERARCHY
+--------------------------------
+
+Current generic class:
+
+User
+- id
+- name
+- email
+
+Create two specialized user types:
+
+User
+├── Admin
+└── Developer
+
+Relationships:
+- Admin IS-A User
+- Developer IS-A User
+
+Common properties stay in User:
+- id
+- name
+- email
+
+Admin-specific responsibilities:
+- assign tasks
+- manage users/projects (later)
+
+Developer-specific responsibilities:
+- update task status
+- change task priority
+- work on assigned tasks
+
+Do not create unnecessary duplicate fields in Admin/Developer.
+
+--------------------------------
+TASK 5.2 — CREATE ADMIN
+--------------------------------
+
+Create:
+
+Admin.java
+
+Make Admin inherit from User using:
+
+extends User
+
+Goal:
+
+Admin should automatically get access to inherited User behavior such as:
+- getId()
+- getName()
+- getEmail()
+- setName()
+- setEmail()
+
+Then add one Admin-specific behavior:
+
+assignTask()
+
+For the first implementation, the method can be kept simple. The important goal is understanding that Admin gets common User functionality through inheritance while adding its own behavior.
+
+--------------------------------
+TASK 5.3 — UNDERSTAND THE CONSTRUCTOR
+--------------------------------
+
+User already has a constructor.
+
+Understand:
+- Child objects also contain the parent part.
+- The parent constructor must be initialized.
+- Java uses super(...) to call the parent constructor.
+
+Goal:
+Create an Admin constructor that correctly initializes the inherited User fields.
+
+Concept:
+
+Admin object
+├── User part
+│   ├── id
+│   ├── name
+│   └── email
+└── Admin-specific behavior
+
+--------------------------------
+TASK 5.4 — CREATE DEVELOPER
+--------------------------------
+
+Create:
+
+Developer.java
+
+Make:
+
+Developer extends User
+
+Add Developer-specific behavior:
+
+1. updateTaskStatus()
+2. changeTaskPriority()
+
+The exact implementation can initially be simple; the focus is on inheritance and role-specific behavior.
+
+--------------------------------
+TASK 5.5 — TEST INHERITED BEHAVIOR
+--------------------------------
+
+In Main:
+
+Create:
+
+Admin admin = new Admin(...);
+Developer developer = new Developer(...);
+
+Verify that both can use inherited User methods:
+
+admin.getName();
+admin.getEmail();
+
+developer.getName();
+developer.getEmail();
+
+Then verify role-specific methods:
+
+admin.assignTask(...);
+
+developer.updateTaskStatus(...);
+developer.changeTaskPriority(...);
+
+This proves:
+- Common behavior comes from User.
+- Specialized behavior belongs to the child class.
+
+--------------------------------
+TASK 5.6 — METHOD OVERRIDING
+--------------------------------
+
+Add a method in User such as:
+
+displayRole()
+
+Initially:
+
+User -> "General User"
+
+Then override it in Admin:
+
+Admin -> "Admin"
+
+And Developer:
+
+Developer -> "Developer"
+
+Use:
+
+@Override
+
+above the child methods.
+
+Concept:
+
+Same method name
++
+same method signature
++
+different implementation in child
+=
+Method overriding
+
+--------------------------------
+TASK 5.7 — UNDERSTAND super()
+--------------------------------
+
+Understand two uses:
+
+1. super(...) 
+   -> calls the parent constructor.
+
+2. super.method()
+   -> calls the parent version of an overridden method.
+
+Do not use super unnecessarily. Understand why it exists.
+
+--------------------------------
+TASK 5.8 — BASIC POLYMORPHISM
+--------------------------------
+
+Test:
+
+User user1 = new Admin(...);
+User user2 = new Developer(...);
+
+Both variables have type User, but they refer to different child objects.
+
+Then call:
+
+user1.displayRole();
+user2.displayRole();
+
+Expected behavior:
+
+Admin
+Developer
+
+This demonstrates runtime polymorphism through method overriding.
+
+--------------------------------
+DAY 5 KEY CONCEPTS
+--------------------------------
+
+1. Inheritance
+A child class acquires accessible properties and behavior from a parent class.
+
+2. extends
+Used to establish inheritance.
+
+3. IS-A relationship
+Admin IS-A User.
+Developer IS-A User.
+
+4. Code reuse
+Common User logic stays in User instead of being duplicated.
+
+5. super()
+Used to access/initialize the parent class.
+
+6. Method overriding
+Child provides its own implementation of a parent method.
+
+7. @Override
+Tells the compiler that the method is intended to override a parent method.
+
+8. Polymorphism
+A parent reference can refer to different child objects, and overridden methods can behave according to the actual object.
+
+--------------------------------
+DAY 5 FINAL CHECKLIST
+--------------------------------
+
+[ ] User used as base class
+[ ] Admin extends User
+[ ] Developer extends User
+[ ] Common fields remain in User
+[ ] Admin-specific behavior
+[ ] Developer-specific behavior
+[ ] Child constructors
+[ ] super(...)
+[ ] Method overriding
+[ ] @Override
+[ ] Basic polymorphism
+[ ] Tested inherited methods
+[ ] Tested overridden methods
+
+--------------------------------
+IMPORTANT DESIGN NOTE
+--------------------------------
+
+Do not force inheritance just because classes look related.
+
+Use inheritance when the relationship genuinely represents:
+
+Child IS-A Parent
+
+For TaskFlow:
+
+Admin IS-A User       -> valid
+Developer IS-A User   -> valid
+
+This is different from:
+
+Project HAS-A Task
+Task HAS-A User
+
+Those are composition/association relationships, not inheritance.
+
+--------------------------------
+INTERVIEW QUESTIONS
+--------------------------------
+
+1. What is inheritance and why did you use it in TaskFlow?
+2. Why should Admin and Developer inherit from User?
+3. What does IS-A mean?
+4. What is the purpose of extends?
+5. What is super()?
+6. What is method overriding?
+7. Why use @Override?
+8. What is polymorphism?
+9. Difference between inheritance and composition?
+10. Why not simply duplicate User fields inside Admin and Developer?
+
+--------------------------------
+END GOAL
+--------------------------------
+
+By the end of Day 5, you should be able to explain:
+
+User
+   ↓
+Admin / Developer
+
+and answer:
+
+"Why is this inheritance?"
+
+Because:
+
+Admin IS-A User
+Developer IS-A User
+
+while:
+
+Project HAS-A Task
+Task HAS-A User
+
+are relationships handled through object references/collections rather than inheritance.
+
+NEXT
+----
+Day 6:
+Polymorphism + Interfaces
+Then deeper abstraction and cleaner backend design.

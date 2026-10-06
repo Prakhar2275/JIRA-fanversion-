@@ -1,0 +1,89 @@
+TaskFlow — Day 6
+Interfaces + Abstraction
+
+Today's Goal
+- Understand interfaces
+- Understand implements
+- Use interfaces for common behavior
+- Understand interface vs abstract class
+- Understand multiple interfaces
+- Apply abstraction to TaskFlow
+
+TASK 6.1 — First Interface
+Create:
+models/TaskAssignable.java
+
+Purpose:
+Any class that can assign tasks should provide assignTask() behavior.
+
+Method:
+void assignTask(Task task, User user);
+
+Do not implement the method inside the interface yet.
+
+TASK 6.2 — Admin Implements Interface
+Change:
+Admin extends User
+
+to:
+Admin extends User implements TaskAssignable
+
+The assignTask() method already present in Admin should implement the interface method.
+
+TASK 6.3 — @Override with Interface
+Add @Override above Admin's assignTask().
+
+Remember:
+- displayRole() is overridden from parent User.
+- assignTask() implements the interface contract.
+
+TASK 6.4 — Second Interface
+Create:
+models/TaskManageable.java
+
+Methods:
+void updateTaskStatus(Task task);
+void changeTaskPriority(Task task, Priority priority);
+
+Then:
+Developer extends User implements TaskManageable
+
+TASK 6.5 — Multiple Interfaces
+Understand that Java:
+- Does NOT support extending multiple classes.
+- DOES support implementing multiple interfaces.
+
+Example:
+class Developer extends User implements InterfaceA, InterfaceB
+
+TASK 6.6 — Abstraction Discussion
+Compare:
+- Interface
+- Abstract class
+- Normal class
+
+Understand where each makes sense in TaskFlow.
+
+TASK 6.7 — Final Integration Test
+Target design:
+
+User
+├── Admin
+│   └── TaskAssignable
+│
+└── Developer
+    └── TaskManageable
+
+Test that classes implementing an interface provide its required behavior.
+
+DAY 6 CHECKLIST
+[ ] 6.1 Create TaskAssignable
+[ ] 6.2 Admin implements TaskAssignable
+[ ] 6.3 @Override with interface
+[ ] 6.4 Create TaskManageable + Developer implementation
+[ ] 6.5 Multiple interfaces
+[ ] 6.6 Interface vs Abstract Class
+[ ] 6.7 Final integration test
+
+Workflow:
+Complete one task at a time. Do not rush to the next task until the current one is understood and tested.

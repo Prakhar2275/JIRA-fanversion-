@@ -1,0 +1,68 @@
+==================================================
+              JIRA - DAY 1 BLUEPRINT
+==================================================
+
+GOAL:
+Understand Classes, Objects and Object Relationships.
+
+ENTITIES:
+1. User
+2. Project
+3. Task
+
+RELATIONSHIPS:
+
+Project
+   |
+   | contains
+   ↓
+ Task
+   |
+   | assigned to
+   ↓
+ User
+
+
+USER
+--------------------------------
+Properties:
+- id
+- name
+- email
+
+Behavior:
+- displayUser()
+
+
+PROJECT
+--------------------------------
+Properties:
+- id
+- name
+- description
+
+Behavior:
+- displayProject()
+
+
+TASK
+--------------------------------
+Properties:
+- id
+- title
+- description
+- assignedUser
+
+Behavior:
+- displayTask()
+- assignUser()
+
+
+MAIN
+--------------------------------
+Responsible for:
+- Creating objects
+- Connecting objects
+- Calling methods
+- Displaying output
+==================================================

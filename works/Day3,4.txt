@@ -1,0 +1,154 @@
+TASKFLOW — DAY 3 + DAY 4 COMBINED WORK
+==============================================
+
+DAY 3 — COLLECTIONS
+--------------------
+
+1. List vs ArrayList
+- Change Project field from ArrayList<Task> to List<Task>.
+- Initialize using new ArrayList<>().
+- Understand: List = interface, ArrayList = implementation.
+
+2. addTask()
+- Add a Task reference to the Project's task list.
+- Flow:
+  project1.addTask(task1)
+  -> tasks.add(task1)
+
+3. getTask()
+- Create getTask(int index).
+- Return the Task at the given index.
+- Understand that it returns the existing Task reference; it does not create a new Task.
+
+4. getTaskCount()
+- Create getTaskCount().
+- Return tasks.size().
+- Understand that size() gives the number of elements in the list.
+
+5. removeTask()
+- Create removeTask(int taskId).
+- Search by Task ID and remove the matching Task.
+- Understand the difference between list index and Task ID.
+- NOTE: Current enhanced-for removal approach should later be improved using a safe removal approach such as Iterator.
+
+6. findTaskById()
+- Create findTaskById(int id).
+- Search through the list.
+- Return the matching Task reference.
+- Return null if no Task is found.
+
+7. Extra Project methods implemented
+- updateTaskTitle()
+- assignUserToTask()
+- unassignUserToTask()
+- getAssignedUser()
+
+DAY 3 KEY CONCEPTS
+------------------
+- List is an interface.
+- ArrayList is a concrete implementation of List.
+- Collections store references to objects.
+- get(index) is position-based.
+- findTaskById(id) is identifier-based.
+- size() returns the number of elements.
+
+DAY 4 — ENUMS
+-------------
+
+1. TaskStatus enum
+Create:
+
+public enum TaskStatus {
+    TODO,
+    IN_PROGRESS,
+    COMPLETED
+}
+
+Concept:
+- Enum represents a fixed set of predefined values.
+- TaskStatus defines the valid states of a Task.
+
+2. Add status to Task
+- Add: private TaskStatus status;
+- New Tasks start with: this.status = TaskStatus.TODO;
+- Add getStatus().
+- Do NOT use a generic setStatus() for the current design.
+
+3. Controlled status transitions
+- startTask():
+  TODO -> IN_PROGRESS
+- completeTask():
+  IN_PROGRESS -> COMPLETED
+- Do not allow arbitrary status changes through a generic setter.
+
+4. Priority enum
+Create:
+
+public enum Priority {
+    LOW,
+    MEDIUM,
+    HIGH
+}
+
+- Add private Priority priority; to Task.
+- Default new Tasks to Priority.MEDIUM.
+- Add getPriority().
+- Add setPriority(Priority priority).
+
+5. Status vs Priority
+Status:
+- Represents the Task's workflow state.
+- Changes through controlled behavior methods.
+
+Priority:
+- Represents importance/urgency.
+- Can legitimately be changed directly, so a setter is acceptable.
+
+DAY 4 KEY CONCEPTS
+------------------
+- Enum = fixed set of predefined constants.
+- TaskStatus = type.
+- status = a Task object's actual current property.
+- Enum provides type safety compared with arbitrary Strings.
+- Domain methods can control valid state transitions.
+- Getter reads the enum value; println displays its text representation, but the value is still an enum, not a String.
+
+FINAL DAY 3 + 4 CHECKLIST
+-------------------------
+[ ] List<Task> + ArrayList<>
+[ ] addTask()
+[ ] getTask()
+[ ] getTaskCount()
+[ ] removeTask(taskId)
+[ ] findTaskById(id)
+[ ] TaskStatus enum
+[ ] status field + default TODO
+[ ] getStatus()
+[ ] startTask()
+[ ] completeTask()
+[ ] Priority enum
+[ ] priority field + default MEDIUM
+[ ] getPriority()
+[ ] setPriority()
+
+INTERVIEW-READY CORE
+--------------------
+1. Why List<Task> instead of ArrayList<Task> as the field type?
+2. Difference between get(index) and findTaskById(id).
+3. Why use enum instead of String for TaskStatus?
+4. Why does status use behavior methods instead of a generic setter?
+5. Why is a setter acceptable for Priority?
+6. Difference between TaskStatus (type) and status (field).
+7. What does ArrayList actually store when we add a Task?
+8. What happens when findTaskById() cannot find a Task?
+
+NEXT
+----
+Day 5: Inheritance
+- User as base/generic class
+- Admin extends User
+- Developer extends User
+- Common vs role-specific behavior
+- Constructors and super()
+- Method overriding
+- Polymorphism

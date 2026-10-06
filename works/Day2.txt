@@ -1,0 +1,33 @@
+DAY 2
+│
+├── Task 1 → Private ka practical experiment
+│
+├── Task 2 → Getters
+│
+├── Task 3 → Setters
+│
+├── Task 4 → Validation through setters
+│
+├── Task 5 → Why ID should NOT have a setter
+│
+├── Task 6 → Encapsulation in Task
+│
+├── Task 7 → Encapsulation + Project's Task list
+│
+└── Final Challenge → Design your objects properly
+
+Learning flow
+
+public data
+   ↓
+problem samjho
+   ↓
+private data
+   ↓
+getter
+   ↓
+setter
+   ↓
+validation
+   ↓
+controlled object
