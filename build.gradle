@@ -13,6 +13,8 @@ dependencies {
     implementation 'io.github.cdimascio:dotenv-java:3.2.0'
     testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
 }
 
 
@@ -24,7 +26,7 @@ java {
 }
 
 application {
-    mainClass = 'Main'
+    mainClass = 'com.taskflow.TaskFlowApplication'
 }
 
 test {
